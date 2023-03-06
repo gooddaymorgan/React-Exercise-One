@@ -16,6 +16,25 @@
 
     <script type="text/babel">
 
+        //array of data
+        const toDos = [
+            "Clean Room",
+            "Do the Dishes",
+            "Laundry",
+            "Assignments",
+            "Go To Work",
+        ];
+
+
+        //Converts our array into a object for easier rendering w REACT
+        //each object is given a key & and a title
+        const toDoObjects = toDos.map(
+            (toDos, i) => ({
+                id: i,
+                title: toDos
+            })
+        );
+
         //----Header ----------->
         function Header(props) {
 
@@ -40,19 +59,27 @@
         //----To Do List--------->
         function Todolist(props) {
 
+            //passes props of our object earlier 
+            //key is assigned in order
+            //along w title
+            //places all into a <li> element in a <ul>
             return (
                 <section>
+                    <ul>
+                        {props.toDos.map((toDo) => (<li key = {toDo.id}>{toDo.title}</li>))} 
+                    </ul>
 
                 </section>
             );
         }
 
         //-------App ---------->
-        // Brings everything together
+        // Brings all components together
         function App() {
             return (
                 <div>
                     <Header title="Save The Planet" message="Let's Save The Whales! " />
+                    <Todolist toDos={toDoObjects} />
                     <Footer message="Copyright © 2023 My Website. All rights reserved." />
                 </div>
             );
