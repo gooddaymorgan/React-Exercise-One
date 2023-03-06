@@ -9,6 +9,49 @@
 
     <title>Assignment 1</title>
 
+    <style>
+         body {
+            background-color: rgb(146, 87, 185);
+            margin: 5%;
+            display: flex;
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+            align-items: center;
+            justify-content: center;
+         }
+
+         ul, li {
+            list-style: none;
+            padding: 0;
+         }
+         button {
+            background-color: white;
+            padding: 15px;
+            border-radius: 20px;
+            color: rgb(146, 87, 185);
+            font-weight: 800;
+            border: 0px white solid;
+         }
+         
+         footer {
+            text-align: center;
+
+         }
+
+         header {
+            text-align: center;
+            padding: 20px;
+         }
+
+         section {
+            background-color: rgb(47, 11, 58);
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 30px ;
+         }
+
+    </style>
+
 </head>
 
 <body>
@@ -31,7 +74,8 @@
         const toDoObjects = toDos.map(
             (toDos, i) => ({
                 id: i,
-                title: toDos
+                title: toDos,
+                value: i
             })
         );
 
@@ -52,11 +96,13 @@
             return (
                 <footer>
                     <p>{props.message}</p>
+                    <p>{props.defaultMessage}</p>
                 </footer>
             );
         }
 
         //----To Do List--------->
+
         function Todolist(props) {
 
             //passes props of our object earlier 
@@ -64,23 +110,32 @@
             //along w title
             //places all into a <li> element in a <ul>
             return (
+
                 <section>
                     <ul>
-                        {props.toDos.map((toDo) => (<li key = {toDo.id}>{toDo.title}</li>))} 
+                        {props.toDos.map((toDo) => (
+                            <li key={toDo.id}>
+                                <input type="checkbox" />
+                                <span style={{"text-decoration": "line-through"}}>{toDo.title}</span>
+                            </li>))}
                     </ul>
 
+                    <button>Reset List</button>
+
                 </section>
+
+
             );
         }
 
         //----Card---------->
         function Card(props) {
             return (
-                <section>
+                <section style={{"text-align": "center"}}>
                     <h2>{props.title}</h2>
                     <h3>{props.subtitle}</h3>
                     <p>{props.content}</p>
-                    <img height= {200} src={props.image}/>
+                    <img height={200} src={props.image} />
                 </section>
             )
         }
@@ -89,10 +144,10 @@
         function App() {
             return (
                 <div>
-                    <Header title="Save The Planet" message="Let's Save The Whales! " />
+                    <Header title="Welcome to My Website!" message="Thanks for visiting my site." />
                     <Todolist toDos={toDoObjects} />
-                    <Card title= "Hot Girl Shit" subtitle= "Rupaul" content= "hi" image ="https://cdn.pixabay.com/photo/2023/02/14/18/55/flowers-7790227_960_720.jpg"/>
-                    <Footer message="Copyright © 2023 My Website. All rights reserved." />
+                    <Card title="My Card Title" subtitle="My Card Subtitle" content="This is the content of my card." image="https://cdn.pixabay.com/photo/2023/02/14/18/55/flowers-7790227_960_720.jpg" />
+                    <Footer message="Contact me at contact@mywebsite.com" defaultMessage = "Copyright © 2023 My Website. All rights reserved."/>
                 </div>
             );
         }
