@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    <!-- Include Babel so we can transpile JSX -->
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
+
+    <title>Assignment 1</title>
+
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+    function Header(props) {
+
+        return (
+            <header>
+                <h1>{props.title}</h1>
+                <p>Welcome to the page to save the enviroment, {props.message}</p>
+            </header>
+        )
+    }
+
+    ReactDOM.render(
+        <Header title="Save The Planet" message="Morgan" />,
+        document.getElementById("root")
+    )
+    </script>
+
+</body>
